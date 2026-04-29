@@ -1,0 +1,38 @@
+def calcular_asistencia():
+    presentes = 0
+    total = 0
+    
+    while True:
+        estado = input("Ingrese estado (P=Presente, A=Ausente, TOTAL para terminar): ").upper()
+        
+        if estado == "TOTAL":
+            break
+        elif estado == "P":
+            presentes += 1
+            total += 1
+        elif estado == "A":
+            total += 1
+        else:
+            print("Entrada inválida")
+    
+    return presentes, total
+
+
+def porcentaje_asistencia(presentes, total):
+    if total == 0:
+        return 0
+    return (presentes / total) * 100
+
+
+# Programa principal
+nombre = input("Ingrese el nombre del estudiante: ")
+
+presentes, total = calcular_asistencia()
+porcentaje = porcentaje_asistencia(presentes, total)
+
+print(f"Asistencia de {nombre}: {porcentaje:.0f}%")
+
+if porcentaje < 70:
+    print("Estado: RECUPERACIÓN")
+else:
+    print("Estado: OK")
